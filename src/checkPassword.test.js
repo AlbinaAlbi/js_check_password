@@ -14,15 +14,21 @@ describe(`Function 'checkPassword':`, () => {
   });
 
   it(`should return 'true' for the valid password with 8 characters`, () => {
-    const result = checkPassword('Pass1234!');
+    const result = checkPassword('Passss1!');
 
     expect(result).toBe(true);
   });
 
   it(`should return 'false' for the password length < 8 characters`, () => {
-    const result = checkPassword('Pass1!');
+    const result = checkPassword('Str@ng');
 
     expect(result).toBe(false);
+  });
+
+  it(`should return 'false' for the password with 16 characters`, () => {
+    const result = checkPassword('Password1234567!');
+
+    expect(result).toBe(true);
   });
 
   it(`should return 'false' for the password length > 16 characters`, () => {
@@ -33,6 +39,12 @@ describe(`Function 'checkPassword':`, () => {
 
   it(`should return 'false' for password without number`, () => {
     const result = checkPassword('Password!');
+
+    expect(result).toBe(false);
+  });
+
+  it(`should 'false' if missing number, special char and uppercase`, () => {
+    const result = checkPassword('qwerty');
 
     expect(result).toBe(false);
   });
